@@ -1,0 +1,57 @@
+:root{
+    --base-color: white;
+    --base-variant: #c6c6c6;
+    --text-color: black;
+}
+
+body {
+    background-color: var(--base-color);
+    color: var(--text-color);
+    text-align: center;
+}
+
+header {
+    background-color: var(--base-variant);
+}
+
+.darkMode {
+    --base-color: black;
+    --base-variant: #333;
+    --text-color: gainsboro;
+}
+
+#theme-switch {
+    height: 50px;
+    width: 50px;
+    padding: 0;
+    border-radius: 50%;
+    background-color: var(--base-variant);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 20px;
+    right: 20px;
+}
+#theme-switch svg {
+    fill: var(--base-color);
+}
+#theme-switch svg:last-child{
+    display: none;
+}
+.darkMode #theme-switch svg:first-child {
+    display: none;
+}
+.darkMode #theme-switch svg:last-child {
+    display: block;
+}
+
+#logo {
+    height: 50px;
+    width: 50px;
+}
+
+img {
+    max-width: 75%;
+    height: auto;
+}
