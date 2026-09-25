@@ -1,3 +1,15 @@
+const game = document.getElementById('game');
+const resetButton = document.getElementById('reset-game');
+
+const optionnalText = document.getElementById('opt');
+
+const startButton = document.getElementById('start-button');
+
+startButton.addEventListener('click', () => {
+    game.classList.remove('disabled');
+    startButton.classList.add('disabled');
+})
+
 let dimension = 150;
 
 const filenames = [
