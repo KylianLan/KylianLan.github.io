@@ -1,4 +1,4 @@
-sconst game = document.getElementById('game');
+const game = document.getElementById('game');
 const resetButton = document.getElementById('reset-game');
 
 const optionnalText = document.getElementById('opt');
@@ -33,14 +33,20 @@ function shuffle(cards) {
 }
 
 function initGame() {
+    game.querySelectorAll('.card').forEach(el => el.remove());
+    
     cards = shuffle(cards);
+
     cards.forEach(card => {
         console.log(card);
         const cardElement = document.createElement('button');
         cardElement.className = 'card';
-        cardElement.innerHTML = `<span class="card-face card-back"></span>
-                                <span class="card-face card-front><img src=${card}></span>`
-        cardElement.setAttribute('aria-label', 'Card face down');
-        grid.appendChild(cardElement);
+        cardElement.type = 'button';
+        cardElement.innerHTML = `
+            <span class="card-face card-back"></span>
+            <span class="card-face card-front"><img src="${card}" alt="Carte"></span>
+        `;
+        cardElement.setAttribute('aria-label', 'Carte de jeu');
+        game.appendChild(cardElement);
     });
 }
