@@ -1,4 +1,4 @@
-const game = document.getElementById('game');
+sconst game = document.getElementById('game');
 const resetButton = document.getElementById('reset-game');
 
 const optionnalText = document.getElementById('opt');
@@ -8,6 +8,8 @@ const startButton = document.getElementById('start-button');
 startButton.addEventListener('click', () => {
     game.classList.remove('disabled');
     startButton.classList.add('disabled');
+
+    initGame();
 })
 
 let dimension = 150;
@@ -32,4 +34,13 @@ function shuffle(cards) {
 
 function initGame() {
     cards = shuffle(cards);
+    cards.forEach(card => {
+        console.log(card);
+        const cardElement = document.createElement('button');
+        cardElement.className = 'card';
+        cardElement.innerHTML = `<span class="card-face card-back"></span>
+                                <span class="card-face card-front><img src=${card}></span>`
+        cardElement.setAttribute('aria-label', 'Card face down');
+        grid.appendChild(cardElement);
+    });
 }
