@@ -91,3 +91,26 @@ function handleCardClick(card) {
 
     checkMatch();
 }
+
+function checkMatch() {
+    if (firstCard.dataset.value == secondCard.dataset.value) {
+        firstCard.classList.add('matched');
+        secondCard.classList.add('matched');
+        firstCard = null;
+        secondCard = null;
+        lockBoard = false;
+        matchedCount += 2;
+        
+    } else {
+        setTimeout(() => {
+            firstCard.classList.add('card-hidden');
+            secondCard.classList.add('card-hidden');
+            firstCard = null;
+            secondCard = null;
+            lockBoard = false;
+        },
+        800);
+        
+    }
+    
+}
