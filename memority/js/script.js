@@ -17,6 +17,8 @@ resetButton.addEventListener('click', () => {
     game.classList.remove('disabled');
     resetButton.classList.remove('disabled');
     startButton.classList.add('disabled');
+
+    initGame();
 });
 
 let dimension = 150;
