@@ -67,3 +67,7 @@ h1 {
 .card:not(.card-hidden) .card-back {
     display: none;
 }
+
+.matched {
+    background-color: green;
+}
