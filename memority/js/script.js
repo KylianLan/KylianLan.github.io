@@ -7,10 +7,17 @@ const startButton = document.getElementById('start-button');
 
 startButton.addEventListener('click', () => {
     game.classList.remove('disabled');
+    resetButton.classList.remove('disabled');
     startButton.classList.add('disabled');
 
     initGame();
-})
+});
+
+resetButton.addEventListener('click', () => {
+    game.classList.remove('disabled');
+    resetButton.classList.remove('disabled');
+    startButton.classList.add('disabled');
+});
 
 let dimension = 150;
 
