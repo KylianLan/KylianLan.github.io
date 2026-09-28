@@ -8,6 +8,10 @@ h1 {
     text-align: center;
 }
 
+/* button {
+    
+} */
+
 .opt {
     text-align: center;
 }
@@ -47,4 +51,19 @@ h1 {
     height: 100%;
     object-fit: contain;
     display: block;
+}
+
+.card.card-hidden .card-front {
+    display: none;
+}
+
+.card-back {
+    width: 100%;
+    height: 100%;
+    background-image: url(https://imgs.search.brave.com/wiC34lwBjus142vTjUl-NFVn0qgWEXg8pQnAn-Xx-Eo/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9tZWRp/YS5nZXR0eWltYWdl/cy5jb20vaWQvMTMz/OTU5MTc2NC9mci9w/aG90by9icm93bi1l/Y28tcmVjeWNsZWQt/a3JhZnQtcGFwZXIt/c2hlZXQtdGV4dHVy/ZS1jYXJkYm9hcmQt/YmFja2dyb3VuZC5q/cGc_cz02MTJ4NjEy/Jnc9MCZrPTIwJmM9/aGhfcUpmSDJKb25Y/ZWJlWldkNlBCcldj/WDQ5eXFweWN5cnBx/UW1ReTBPTT0);
+    display: block;
+}
+
+.card:not(.card-hidden) .card-back {
+    display: none;
 }
