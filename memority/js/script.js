@@ -7,16 +7,26 @@ const startButton = document.getElementById('start-button');
 
 startButton.addEventListener('click', () => {
     game.classList.remove('disabled');
+    resetButton.classList.remove('disabled');
     startButton.classList.add('disabled');
-})
+
+    initGame();
+});
+
+resetButton.addEventListener('click', () => {
+    game.classList.remove('disabled');
+    resetButton.classList.remove('disabled');
+    startButton.classList.add('disabled');
+
+    initGame();
+});
 
 let dimension = 150;
 
 const filenames = [
     'Cruelty','Curiosity','Falsity',
-    'Lovity','Moggity','MonsterVerity',
-    'Obesity','Verity','VerityCreepyOpen',
-    'VerityDispleased'
+    'Lovity','Moggity',
+    'Verity','VerityCreepyOpen', 'VerityDispleased'
 ];
 const images = filenames.map(name => `./images/${name}.webp`);
 let cards = [...images, ...images];
@@ -31,5 +41,19 @@ function shuffle(cards) {
 }
 
 function initGame() {
+    game.querySelectorAll('.card').forEach(el => el.remove());
+    
     cards = shuffle(cards);
+
+    cards.forEach(card => {
+        console.log(card);
+        const cardElement = document.createElement('button');
+        cardElement.className = 'card card-hidden';
+        cardElement.type = 'button';
+        cardElement.innerHTML = `
+            <span class="card-face card-front"><img src="${card}" alt="Carte"></span>
+        `;
+        cardElement.setAttribute('aria-label', 'Carte de jeu');
+        game.appendChild(cardElement);
+    });
 }
