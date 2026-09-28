@@ -5,6 +5,8 @@ const optionnalText = document.getElementById('opt');
 
 const startButton = document.getElementById('start-button');
 
+let cardsVisible = 0;
+
 startButton.addEventListener('click', () => {
     game.classList.remove('disabled');
     resetButton.classList.remove('disabled');
@@ -54,6 +56,12 @@ function initGame() {
             <span class="card-face card-front"><img src="${card}" alt="Carte"></span>
         `;
         cardElement.setAttribute('aria-label', 'Carte de jeu');
+        cardElement.addEventListener('click', () => {
+            if (cardsVisible < 2){
+                cardElement.classList.remove('card-hidden');
+                cardsVisible++;
+            }
+        });
         game.appendChild(cardElement);
     });
 }
