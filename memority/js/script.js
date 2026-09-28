@@ -49,10 +49,9 @@ function initGame() {
     cards.forEach(card => {
         console.log(card);
         const cardElement = document.createElement('button');
-        cardElement.className = 'card';
+        cardElement.className = 'card card-hidden';
         cardElement.type = 'button';
         cardElement.innerHTML = `
-            <span class="card-face card-back"></span>
             <span class="card-face card-front"><img src="${card}" alt="Carte"></span>
         `;
         cardElement.setAttribute('aria-label', 'Carte de jeu');
