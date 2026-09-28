@@ -5,7 +5,11 @@ const optionnalText = document.getElementById('opt');
 
 const startButton = document.getElementById('start-button');
 
-let cardsVisible = 0;
+let firstCard = null;
+let secondCard = null;
+let lockBoard = false;
+let moves = 0;
+let matchedCount = 0;
 
 startButton.addEventListener('click', () => {
     game.classList.remove('disabled');
@@ -43,27 +47,47 @@ function shuffle(cards) {
 }
 
 function initGame() {
-    cardsVisible = 0;
 
     game.querySelectorAll('.card').forEach(el => el.remove());
     
     cards = shuffle(cards);
 
     cards.forEach(card => {
-        console.log(card);
+        // console.log(card.split('./images/')[1]);
         const cardElement = document.createElement('button');
         cardElement.className = 'card card-hidden';
         cardElement.type = 'button';
+
+        cardElement.setAttribute('role', 'button');
+        cardElement.setAttribute('tabindex','0');
+
         cardElement.innerHTML = `
             <span class="card-face card-front"><img src="${card}" alt="Carte"></span>
         `;
+
         cardElement.setAttribute('aria-label', 'Carte de jeu');
-        cardElement.addEventListener('click', () => {
-            if (cardsVisible < 2){
-                cardElement.classList.remove('card-hidden');
-                cardsVisible++;
-            }
-        });
+        cardElement.addEventListener('click', () => handleCardClick(cardElement));
+
+        cardElement.dataset.value = card.split('./images/')[1];
+        console.log(cardElement.dataset)
         game.appendChild(cardElement);
     });
+}
+
+function handleCardClick(card) {
+    if (lockBoard || card === firstCard) return;
+    if (!card.classList.contains('card-hidden')) return;
+
+    card.classList.remove('card-hidden');
+
+    if (!firstCard) {
+        firstCard = card;
+        return;
+    }
+
+    secondCard = card;
+    lockBoard = true;
+    moves++;
+
+    checkMatch();
 }
