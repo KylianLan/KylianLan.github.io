@@ -1,3 +1,6 @@
+let seconds = 0;
+let timeInterval = null;
+
 const game = document.getElementById('game');
 const resetButton = document.getElementById('reset-game');
 
@@ -113,4 +116,13 @@ function checkMatch() {
         
     }
     
+}
+
+function formatTime(sec) {
+    const minutes = Math.floor(sec/60);
+    sec %= 60;
+
+    const time = `${minutes}:${sec}`;
+
+    return time;
 }
