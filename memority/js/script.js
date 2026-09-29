@@ -1,6 +1,8 @@
 let seconds = 0;
 let timeInterval = null;
 
+const timerDisplay = document.getElementById('timer-display');
+
 const game = document.getElementById('game');
 const resetButton = document.getElementById('reset-game');
 
@@ -125,4 +127,10 @@ function formatTime(sec) {
     const time = `${minutes}:${sec}`;
 
     return time;
+}
+
+function startTimer() {
+    setInterval(1000);
+    sec++;
+    timerDisplay.textContent = formaTime(sec);
 }
