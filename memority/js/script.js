@@ -40,6 +40,9 @@ function shuffle(cards) {
 
 function initGame() {
 
+    matchedCount = 0;
+    moves = 0;
+
     game.classList.remove('disabled');
     resetButton.classList.remove('disabled');
     startButton.classList.add('disabled');
@@ -120,22 +123,24 @@ function checkMatch() {
 
 function formatTime(sec) {
     const minutes = Math.floor(sec/60);
-    sec %= 60;
+    const remainingSeconds = sec % 60;
 
-    const time = `${minutes}:${sec}`;
+    const time = `${String(minutes).padStart(2,'0')}:${String(remainingSeconds).padStart(2,'0')}`;
 
     return time;
 }
 
 function startTimer() {
-    setInterval(1000);
-    seconds++;
     timerDisplay.textContent = formatTime(seconds);
+    timeInterval = setInterval(() => {
+        seconds++;
+        timerDisplay.textContent = formatTime(seconds);
+    }, 1000);
 }
 
 function checkVictory() {
     if (matchedCount === cards.length) {
-        clearInterval();
-        result.textContent = formatTime(seconds);
+        clearInterval(timeInterval);
+        result.textContent = `Congrats! You won in ${formatTime(seconds)}!`;
     }
 }
