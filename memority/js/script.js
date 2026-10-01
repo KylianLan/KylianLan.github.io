@@ -141,6 +141,6 @@ function startTimer() {
 function checkVictory() {
     if (matchedCount === cards.length) {
         clearInterval(timeInterval);
-        result.textContent = `Congrats! You won in ${formatTime(seconds)}!`;
+        alert(`Congrats! You won in ${formatTime(seconds)}!`);
     }
 }
