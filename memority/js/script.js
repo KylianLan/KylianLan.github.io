@@ -2,6 +2,7 @@ let seconds = 0;
 let timeInterval = null;
 
 const timerDisplay = document.getElementById('timer-display');
+const result = document.getElementById('result');
 
 const game = document.getElementById('game');
 const resetButton = document.getElementById('reset-game');
@@ -16,23 +17,9 @@ let lockBoard = false;
 let moves = 0;
 let matchedCount = 0;
 
-startButton.addEventListener('click', () => {
-    game.classList.remove('disabled');
-    resetButton.classList.remove('disabled');
-    startButton.classList.add('disabled');
+startButton.addEventListener('click', initGame);
 
-    initGame();
-});
-
-resetButton.addEventListener('click', () => {
-    game.classList.remove('disabled');
-    resetButton.classList.remove('disabled');
-    startButton.classList.add('disabled');
-
-    initGame();
-});
-
-let dimension = 150;
+resetButton.addEventListener('click', initGame);
 
 const filenames = [
     'Cruelty','Curiosity','Falsity',
@@ -52,6 +39,13 @@ function shuffle(cards) {
 }
 
 function initGame() {
+
+    game.classList.remove('disabled');
+    resetButton.classList.remove('disabled');
+    startButton.classList.add('disabled');
+
+    timeInterval = null;
+    seconds = 0;
 
     game.querySelectorAll('.card').forEach(el => el.remove());
     
@@ -133,4 +127,11 @@ function startTimer() {
     setInterval(1000);
     sec++;
     timerDisplay.textContent = formaTime(sec);
+}
+
+function checkVictory() {
+    if (matchedCount === cards.length) {
+        clearInterval();
+        result.textContent = formatTime(sec);
+    }
 }
