@@ -71,6 +71,8 @@ function initGame() {
         console.log(cardElement.dataset)
         game.appendChild(cardElement);
     });
+
+    startTimer();
 }
 
 function handleCardClick(card) {
@@ -111,6 +113,8 @@ function checkMatch() {
         800);
         
     }
+
+    checkVictory();
     
 }
 
@@ -125,13 +129,13 @@ function formatTime(sec) {
 
 function startTimer() {
     setInterval(1000);
-    sec++;
-    timerDisplay.textContent = formaTime(sec);
+    seconds++;
+    timerDisplay.textContent = formatTime(seconds);
 }
 
 function checkVictory() {
     if (matchedCount === cards.length) {
         clearInterval();
-        result.textContent = formatTime(sec);
+        result.textContent = formatTime(seconds);
     }
 }
